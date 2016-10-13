@@ -30,6 +30,6 @@ class User extends Authenticatable
      * @var array
      */
     public static function search($keayword){
-        return DB::select("select * from users where name LIKE '$keayword%'");
+        return DB::select("select * from users where (name LIKE '%$keayword%') or (email LIKE '%$keayword%')");
     }
 }
