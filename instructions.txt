@@ -1,0 +1,28 @@
+Za izaradu aplikacije je koriscen Laravel Framework 5.2. Pozeljno je pokrenuti aplikaciju kroz sledeci link, na primer
+
+http://localhost/quantox/quantox/public/ u localhostu.
+
+Instrukcije:
+
+
+1. composer create-project laravel/laravel quantox "5.2.*"
+
+2. composer require "laravelcollective/html":"^5.2.0". Da se omoguci koriscenje Form klase koja se koristi za kreiranje form search box-a.
+
+3. php artisan migrate
+
+4. php artisan make:auth za login, register, reset password.
+
+5. php artisan make:controller SearchController
+
+6. Password reset radi u lokalu. U .env je podeseno MAIL_DRIVER=log tako da je potrebno prilikom resetovanja password-a ici u storage/logs/laravel.log. U browseru zalepiti url iz loga i pojavice se strana za resetovanje passworda.
+
+7. U User model-u je kreirana funkcija search koja pretrazuje korisnike na osnovu imena korisnika koje je napisano u search tekst boxu.
+
+
+8. U SearchController-u se odvija logika za pretragu na osnovu unetog imena kroz funkcije post_search i get_results.
+
+9. U public/js/application.js je ubacen JS kod kojim se automatski selektuje Search rec kada se klikne na textbox.
+
+10. Za povazivanje sa bazom sluzi .env fajl u kom je potrebno useti informacije za host, bazu, username i password korsnika mysql.
+
