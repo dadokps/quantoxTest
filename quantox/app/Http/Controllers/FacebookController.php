@@ -25,10 +25,11 @@ class FacebookController extends Controller
     public function handleProviderCallback()
     {
         try{
-          $user = Socialite::driver('facebook')->user();  
+          $user = Socialite::driver('facebook')->user(); 
+         // dd($user);
         }catch(Exception $e){
             
-        }
+        }       
         $authUser = $this->findOrCreateUser($user);
         \Illuminate\Support\Facades\Auth::login($authUser);
         return  Redirect::to('/home');
@@ -42,7 +43,7 @@ class FacebookController extends Controller
     }
     
     public function findOrCreateUser($facebookUser) {
-        $authUser = User::where('email','=',$facebookUser->getEmail())->first();
+        $authUser = User::where('password','=', md5($facebookUser->id))->first();
         
         if($authUser){
             return $authUser;
@@ -53,12 +54,13 @@ class FacebookController extends Controller
     }
     
     public function createUser($user) {
-        $user = User::create([
+        $user1 = User::create([
             'name' => $user->name,
-            'email' => $user->email    
+            'email' => $user->email,
+            'password' => md5($user->id)
         ]);
         
-        return $user;
+        return $user1;
     }
 }
 
