@@ -5,13 +5,11 @@
     <div class="container">
         <div class="row"> 
 
-    <div class="panel-body">
-           {{ $message }}
+             <div class="panel-body">
+                 {{ $message }}
+            </div>
+
+        </div> 
     </div>
-
-  
-
-    </div> 
-</div>
 @endsection
 

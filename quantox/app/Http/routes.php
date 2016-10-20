@@ -20,7 +20,10 @@ Route::auth();
 Route::group(['middleware' => ['web']], function(){
     Route::post('search', 'SearchController@post_search');
     Route::get('results/{keyword}', ['uses' => 'SearchController@get_results','middleware' => 'auth' ]);
-       
+    
+    Route::get('auth/facebook', 'FacebookController@redirectToProvider')->name('facebook.login');
+    Route::get('auth/facebook/callback', 'FacebookController@handleProviderCallback');
+    
 });
 
 Route::get('/home', 'HomeController@index');

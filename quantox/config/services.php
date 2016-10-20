@@ -34,5 +34,11 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    
+    'facebook' => [
+    'client_id' => '134295410371333',
+    'client_secret' => '102c2d26a098de0513acc4444583c35f',
+    'redirect' => 'http://localhost/quantox/quantox/public/auth/facebook/callback',
+],
 
 ];
